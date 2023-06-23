@@ -1,4 +1,4 @@
-create table pacientes(
+create table bd_cliente(
     id bigint not null auto_increment,
     nome varchar(100) not null,
     email varchar(100) not null unique,
@@ -11,6 +11,7 @@ create table pacientes(
     numero varchar(20),
     uf char(2) not null,
     cidade varchar(100) not null,
+    ativo tinyint not null,
 
     primary key(id)
 );

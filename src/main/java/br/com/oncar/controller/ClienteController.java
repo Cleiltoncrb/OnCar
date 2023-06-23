@@ -7,10 +7,7 @@ import jakarta.validation.Valid;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.beans.Transient;
 
@@ -19,6 +16,14 @@ import java.beans.Transient;
 public class ClienteController {
     @Autowired
     private ClienteRepository repository;
+
+    @GetMapping
+    public String listar(){
+        return "<h1> Mostrando na tela </>";
+    }
+
+
+
 
     @PostMapping
     @Transient
