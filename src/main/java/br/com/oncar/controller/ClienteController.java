@@ -7,22 +7,21 @@ import jakarta.validation.Valid;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.beans.Transient;
 
-@RestController
+@Controller
 @RequestMapping("/cliente")
 public class ClienteController {
     @Autowired
     private ClienteRepository repository;
 
     @GetMapping
-    public String listar(){
-        return "<h1> Mostrando na tela </>";
+    public String listar() {
+        return "oficina/cadastrarCliente";
     }
-
-
 
 
     @PostMapping
