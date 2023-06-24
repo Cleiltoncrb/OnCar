@@ -5,7 +5,6 @@ import jakarta.validation.constraints.Pattern;
 
 public record DadosCarroCliente(
         @NotBlank
-        //@Pattern(regexp = "\\d{7}")
         String placa,
         String marca,
         String modelo,
@@ -13,5 +12,5 @@ public record DadosCarroCliente(
         @NotBlank
         @Pattern(regexp = "\\d{4}")
         String anofabricacao
-        ) {
+) {
 }

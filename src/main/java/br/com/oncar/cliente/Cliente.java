@@ -8,14 +8,13 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter
 
+@Table(name = "tb_cliente")
+@Entity(name = "Cliente")
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "Cliente")
-@Table(name = "bd_cliente")
 @EqualsAndHashCode(of = "id")
-
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

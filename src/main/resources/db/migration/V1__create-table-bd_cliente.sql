@@ -1,4 +1,4 @@
-create table bd_cliente(
+create table tb_cliente(
 
     -- Dados Cliente
     id bigint not null auto_increment,
