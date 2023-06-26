@@ -3,6 +3,7 @@ package br.com.oncar.controller;
 import br.com.oncar.cliente.Cliente;
 import br.com.oncar.cliente.ClienteRepository;
 import br.com.oncar.cliente.DadosCadastroCliente;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
 
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.beans.Transient;
 
-@Controller
+@RestController
 @RequestMapping("/cliente")
 public class ClienteController {
     @Autowired
@@ -20,13 +21,14 @@ public class ClienteController {
 
     @GetMapping
     public String listar() {
-        return "oficina/cadastrarCliente";
+        return "oficina/cadastroCliente";
     }
 
-
     @PostMapping
-    @Transient
+    @Transactional
     public void cadastrarCliente(@RequestBody @Valid DadosCadastroCliente dados) {
+        System.out.println("\n\n\n MOSTRAR DADOS \n\n\n" + dados);
+//        System.out.println(dados);
         repository.save(new Cliente(dados));
     }
 }

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Endereco {
+public class EnderecoCliente {
     private String logradouro;
     private String bairro;
     private String cep;
@@ -19,7 +19,7 @@ public class Endereco {
     private String uf;
 
 
-    public Endereco(DadosEndereco dados) {
+    public EnderecoCliente(DadosEnderecoCliente dados) {
         this.logradouro = dados.logradouro();
         this.bairro = dados.bairro();
         this.cep = dados.cep();
@@ -29,7 +29,7 @@ public class Endereco {
         this.complemento = dados.complemento();
     }
 
-    public void atualizarInformacoes(DadosEndereco dados) {
+    public void atualizarInformacoesEndereco(DadosEnderecoCliente dados) {
         if (dados.logradouro() != null) {
             this.logradouro = dados.logradouro();
         }
@@ -51,6 +51,5 @@ public class Endereco {
         if (dados.complemento() != null) {
             this.complemento = dados.complemento();
         }
-
     }
 }

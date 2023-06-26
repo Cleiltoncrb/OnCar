@@ -3,7 +3,7 @@ package br.com.oncar.endereco;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
-public record DadosEndereco(
+public record DadosEnderecoCliente(
         @NotBlank
         String logradouro,
         @NotBlank
@@ -17,6 +17,4 @@ public record DadosEndereco(
         String uf,
         String complemento,
         String numero) {
-
-
 }
