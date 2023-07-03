@@ -1,34 +1,51 @@
 package br.com.oncar.controller;
 
+import br.com.oncar.carro.Carro;
+import br.com.oncar.cliente.ListarCliente;
+import br.com.oncar.repository.CarroRepository;
+import br.com.oncar.carro.CadastrarCarro;
 import br.com.oncar.cliente.Cliente;
-import br.com.oncar.cliente.ClienteRepository;
-import br.com.oncar.cliente.DadosCadastroCliente;
-import jakarta.transaction.Transactional;
-import jakarta.validation.Valid;
+import br.com.oncar.repository.ClienteRepository;
 
-
+import br.com.oncar.cliente.CadastrarCliente;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.beans.Transient;
-
-@RestController
-@RequestMapping("/cliente")
+@Controller
+@RequestMapping("/oncar")
 public class ClienteController {
     @Autowired
-    private ClienteRepository repository;
+    private ClienteRepository clienteRepository;
 
-    @GetMapping
-    public String listar() {
+    @Autowired
+    private CarroRepository carroRepository;
+
+    @GetMapping("/cadastrarcliente")
+    public String carregapaginacliente() {
         return "oficina/cadastroCliente";
+    }
+
+
+    @GetMapping("/listarCliente")
+    public String listarCliente(Model model) {
+        model.addAttribute("listaCLiente", clienteRepository.findAll());
+        model.addAttribute("listaCarro", carroRepository.findAll());
+        //var retorno = clienteRepository.findAllByAtivoTrue(paginacao).map(ListarCliente::new);
+        return "oficina/listarCliente";
     }
 
     @PostMapping
     @Transactional
-    public void cadastrarCliente(@RequestBody @Valid DadosCadastroCliente dados) {
-        System.out.println("\n\n\n MOSTRAR DADOS \n\n\n" + dados);
-//        System.out.println(dados);
-        repository.save(new Cliente(dados));
+    public String cadastrarCliente(CadastrarCliente cliente, CadastrarCarro carro) {
+        clienteRepository.save(new Cliente(cliente));
+        carroRepository.save(new Carro(carro));
+        return "redirect:/oncar/listarCliente";
     }
+
 }

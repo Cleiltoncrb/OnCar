@@ -1,12 +1,13 @@
 package br.com.oncar.cliente;
 
-import br.com.oncar.carro.CarroCliente;
-import br.com.oncar.endereco.EnderecoCliente;
+import br.com.oncar.carro.Carro;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static jakarta.persistence.CascadeType.ALL;
 
 
 @Table(name = "tb_cliente")
@@ -15,6 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
+@ToString
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,41 +26,27 @@ public class Cliente {
     private String email;
     private String cpf;
     private String telefone;
+    private String endereco;
     private Boolean ativo;
 
-    @Embedded
-    private EnderecoCliente endereco;
-    @Embedded
-    private CarroCliente carro;
 
-    public Cliente(DadosCadastroCliente dados) {
+    @OneToMany(cascade = ALL , mappedBy = "cliente")
+    private List<Carro> carro = new ArrayList<>();
+
+    public Cliente(CadastrarCliente dados) {
+
         this.ativo = true;
+        this.nome = dados.nome();
+        this.cpf = dados.cpf();
+        this.email = dados.email();
+        this.telefone = dados.telefone();
+        this.endereco = dados.endereco();
+    }
+
+    public void atualizarCliente(AtualizarCliente dados) {
         this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = dados.telefone();
         this.cpf = dados.cpf();
-        this.endereco = new EnderecoCliente(dados.endereco());
-        this.carro = new CarroCliente(dados.carro());
-    }
-
-    public void atualizarInformacoesCliente(DadosAtualizacaoCliente dados) {
-        if (dados.nome() != null) {
-            this.nome = dados.nome();
-        }
-        if (dados.email() != null) {
-            this.email = dados.email();
-        }
-        if (dados.telefone() != null) {
-            this.telefone = dados.telefone();
-        }
-        if (dados.cpf() != null) {
-            this.telefone = dados.cpf();
-        }
-        if (dados.endereco() != null) {
-            this.endereco.atualizarInformacoesEndereco(dados.endereco());
-        }
-        if (dados.carro() != null) {
-            this.carro.atualizarInformacoesCarro(dados.carro());
-        }
     }
 }

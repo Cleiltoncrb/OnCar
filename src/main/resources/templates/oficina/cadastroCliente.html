@@ -1,35 +1,107 @@
 <!DOCTYPE html>
+
 <html lang="en"
       xmlns:th="http://thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{template.html}"
->
+      layout:decorate="~{template.html}">
+
 <head>
-    <meta charset="UTF-8">
     <title>Cadastro de Clientes</title>
 </head>
 <body>
+
 <div layout:fragment="conteudo">
-    <h1>Cadastro de Clientes</h1>
-    <form>
-        <label for="nome">Nome</label>
-        <input id="nome" name="nome">
+    <div class="container">
+        <div class="form-image">
+            <img src="../img/img_cadastro_cliente.svg">
+        </div>
+        <div class="form">
 
-        <label for="email">EmailL</label>
-        <input id="email" name="email">
+            <form action="/oncar" method="post">
 
-        <label for="cpf">CPF</label>
-        <input id="cpf" name="cpf">
+                <input type="hidden" name="_method" value="put" th:if="${cliente != null}">
+                <input type="hidden" name="id" th:value="${cliente?.id}">
 
-        <label for="telefone">Telefone</label>
-        <input id="telefone" name="telefone">
+                <div class="form-header">
+                    <div class="title">
+                        <h1>Cadastro de Cliente</h1>
+                    </div>
+                    <div class="input-group">
+                        <fieldset>
+                            <legend>Dados pessoais</legend>
+                            <!--                            <div class="input-box">-->
+                            <table class="input-box">
+                                <tr>
+                                    <th>
+                                        <label for="nome">Nome</label>
+                                        <input id="nome" type="text" name="nome" th:value="${cliente?.nome}">
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="cpf">Cpf</label>
+                                        <input id="cpf" type="text" name="cpf" th:value="${cliente?.cpf}">
+                                    </td>
+                                    <td>
+                                        <label for="email">Email</label>
+                                        <input id="email" type="text" name="email" th:value="${cliente?.email}">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="telefone">Telefone</label>
+                                        <input id="telefone" type="text" name="telefone"
+                                               th:value="${cliente?.telefone}">
+                                    </td>
+                                    <td>
+                                        <label for="endereco">Endereço</label>
+                                        <input id="endereco" type="text" name="endereco"
+                                               th:value="${cliente?.endereco}">
+                                    </td>
 
-        <label for="endereco">Endereço</label>
-        <input id="endereco" name="endereco">
+                                </tr>
+                            </table>
+                        </fieldset>
+                        <fieldset class="input-box">
+                            <legend>Dados do veículo</legend>
 
-        <input type="submit" value="Cadastrar">
+                            <table class="input-box">
+                                <tr>
+                                    <td>
+                                        <label for="placa">Placa</label>
+                                        <input id="placa" type="text" name="placa" th:value="${carro?.placa}">
+                                    </td>
+                                    <td>
+                                        <label for="modelo">Modelo</label>
+                                        <input id="modelo" type="text" name="modelo" th:value="${carro?.modelo}">
+                                    </td>
+                                    <td>
+                                        <label for="anofabricacao">Ano de Fabricação</label>
+                                        <input id="anofabricacao" type="text" name="anofabricacao"
+                                               th:value="${carro?.anofabricacao}">
+                                    </td>
+                                </tr>
+                            </table>
+                        </fieldset>
+                        <div class="cadastrar-button">
+                            <button>Cadastrar</button>
+                        </div>
+                        <br/>
+                        <div class="cadastrar-button">
+                            <button><a href="/oncar/listarCliente">Listar Cliente</a></button>
+<!--                            <a class="cadastrar-button" href="/oncar/listarCliente">Listar Cliente</a>-->
+                        </div>
+                    </div>
+                </div>
+            </form>
 
-    </form>
+        </div>
+    </div>
 </div>
 </body>
 </html>
+
+
+
+
+

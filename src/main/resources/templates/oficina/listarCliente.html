@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}"
+>
+<head>
+    <title>Lista de Clientes</title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+
+    <a href="/oncar/cadastrarcliente">Novo Cliente</a>
+
+    <fieldset>
+        <legend>Dados do Clientes</legend>
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>NOME</th>
+                    <th>E-MAIL</th>
+                    <th>CPF</th>
+                    <th>TELEFONE</th>
+                    <th>ENDEREÇO</th>
+                </tr>
+                </thead>
+                <tr th:each="cliente : ${listaCLiente}">
+                    <td th:text="${cliente.nome}"></td>
+                    <td th:text="${cliente.email}"></td>
+                    <td th:text="${cliente.cpf}"></td>
+                    <td th:text="${cliente.telefone}"></td>
+                    <td th:text="${cliente.endereco}"></td>
+                    <td>
+                        <a th:href="@{/oncar/cadastrarcliente?id={id}(id=${cliente.id})}">Editar</a>
+
+                        <form action="/oncar" method="post">
+                            <input type="hidden" name="_method" value="delete">
+                            <input type="hidden" name="id" th:value="${cliente.id}">
+                            <input type="submit" value="Excluir">
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Dados do Veículo</legend>
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>PLACA</th>
+                    <th>MODELO</th>
+                    <th>ANODEFABRICAÇÃO</th>
+                </thead>
+                </tr>
+                <tr th:each="carro : ${listaCarro}">
+                    <td th:text="${carro.placa}"></td>
+                    <td th:text="${carro.modelo}"></td>
+                    <td th:text="${carro.anofabricacao}"></td>
+                </tr>
+            </table>
+        </div>
+    </fieldset>
+
+</div>
+</body>
+</html>
