@@ -3,9 +3,9 @@
       xmlns:th="http://thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{template.html}"
->
+      xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Lista de Clientes</title>
+    <meta charset="UTF-8">
     <style>
 
 fieldset {
@@ -44,11 +44,6 @@ tfoot td:nth-child(2) {
     font-weight: bold
 }
 
-
-
-
-
-
     </style>
 </head>
 <body>
@@ -60,8 +55,9 @@ tfoot td:nth-child(2) {
         <br>
         <br>
     </div>
-    <fieldset>
-        <legend>Dados do Clientes</legend>
+
+        <div class="lista">
+            <h1 class="mb-5">Lista de Clientes</h1>
         <div>
             <table>
                 <thead>
@@ -73,6 +69,7 @@ tfoot td:nth-child(2) {
                     <th>ENDEREÇO</th>
                 </tr>
                 </thead>
+                <tbody>
                 <tr th:each="cliente : ${listaCLiente}">
                     <td th:text="${cliente.nome}"></td>
                     <td th:text="${cliente.email}"></td>
@@ -85,14 +82,16 @@ tfoot td:nth-child(2) {
                         <form action="/oncar" method="post">
                             <input type="hidden" name="_method" value="delete">
                             <input type="hidden" name="id" th:value="${cliente.id}">
-                            <input type="submit" value="Excluir">
+                            <button type="submit">Excluir</button>
                         </form>
                     </td>
                 </tr>
+                </tbody>
             </table>
         </div>
-    </fieldset>
-    <fieldset>
+        </div>
+
+
         <legend>Dados do Veículo</legend>
         <div>
             <table>
@@ -100,7 +99,7 @@ tfoot td:nth-child(2) {
                 <tr>
                     <th>PLACA</th>
                     <th>MODELO</th>
-                    <th>ANODEFABRICAÇÃO</th>
+                    <th>ANO DE FABRICAÇÃO</th>
                 </tr>
                 </thead>
 
@@ -120,8 +119,10 @@ tfoot td:nth-child(2) {
                 </tr>
             </table>
         </div>
-    </fieldset>
+
 
 </div>
+</div>
+
 </body>
 </html>

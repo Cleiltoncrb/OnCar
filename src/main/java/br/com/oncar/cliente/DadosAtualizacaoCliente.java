@@ -1,7 +1,7 @@
 package br.com.oncar.cliente;
 
 import br.com.oncar.carro.DadosCarroCliente;
-import br.com.oncar.endereco.DadosEnderecoCliente;
+
 import jakarta.validation.constraints.NotNull;
 
 public record DadosAtualizacaoCliente(
@@ -11,6 +11,6 @@ public record DadosAtualizacaoCliente(
     String email,
     String telefone,
     String cpf,
-    DadosEnderecoCliente endereco,
+    String endereco,
     DadosCarroCliente carro){
 }

@@ -1,7 +1,6 @@
 package br.com.oncar.cliente;
 
 import br.com.oncar.carro.DadosCarroCliente;
-import br.com.oncar.endereco.DadosEnderecoCliente;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -17,7 +16,7 @@ public record DadosCadastroCliente(
         String telefone,
         @NotBlank @Pattern(regexp = "\\d{3}\\.?\\d{3}\\.?\\d{3}\\-?\\d{2}") String cpf,
         @NotNull @Valid
-        DadosEnderecoCliente endereco,
+        String endereco,
         @NotNull @Valid
         DadosCarroCliente carro) {
 }
