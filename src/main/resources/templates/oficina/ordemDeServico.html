@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ordem de Serviço</title>
+  <style>
+
+    body {
+    font-family: 'inter',sans-serif;
+    background: #6495ED;
+    width:50%
+    align-items: center;
+    text-align: center;
+
+    }
+
+    h2 {
+    text-align: center;
+    font-size: 40px;
+    }
+
+    . container {
+    max-width: 500px;
+    margin: 0auto;
+    padding: 20px;
+
+    }
+
+    .form-group {
+    margin-bottom: 20px;
+    }
+
+  label {
+  display: block;
+  font-weght: bold;
+  margin-top 2rem;
+  font-size: 25px;
+
+  }
+input[type="text"] {
+      width: 50%;
+
+    }
+
+    textarea {
+      width: 50%;
+      padding: 0.0px;
+    }
+
+    .btn-container {
+      text-align: center;
+      font-size: 10px;
+
+    }
+
+    .voltar {
+      display: inline-block;
+      background-color: #191970;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 4px;
+
+    }
+
+    .voltar a {
+    text-decoration: none;
+    font-size: 0.93rem;
+    font-weight:500;
+    color: #ffffff;
+
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #191970;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Ordem de Serviço!</h2>
+  <form id="order-form">
+    <div class="form-group">
+      <label for="name">Nome:</label>
+      <input type="text" id="name" name="name">
+    </div>
+
+    <div class="form-group">
+      <label for="address">Endereço:</label>
+      <input type="text" id="address" name="address" >
+    </div>
+
+    <div class="form-group">
+      <label for="entry-date">Data de Entrada:</label>
+      <input type="text" id="entry-date" name="entry-date" >
+    </div>
+
+    <div class="form-group">
+      <label for="entry-date">Data de Saída:</label>
+      <input type="text" id="dataSaida" name="entry-date">
+    </div>
+
+    <div class="form-group">
+      <label for="products">Produtos:</label>
+      <textarea id="products" name="products"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="entry-date">Valor Total:</label>
+      <input type="text" id="valorTotal" name="entry-date">
+    </div>
+
+    <div class="btn-container">
+      <button type="submit" class="btn">Imprimir</button>
+    </div>
+
+    <br/>
+    <div class="voltar">
+      <a href="/oncar/cadastrarcliente" >Voltar</a>
+    </div>
+  </form>
+</div>
+
+<script>
+     //Função para imprimir a ordem de serviço
+    function printOrder() {
+      window.print();
+
+    }
+
+    // Manipulador de evento para o envio do formulário
+    document.getElementById("order-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      // Impede o envio do formulário padrão
+      printOrder(); // Chama a função de impressão
+    });
+  </script>
+</body>
+</html>
