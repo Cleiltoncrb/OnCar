@@ -13,7 +13,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #0c0ce94d;
+    background: #6495ED;
 
 
 }
@@ -49,11 +49,10 @@
 }
 
 .form-header {
-    margin-bottom: 10rem;
+    margin-bottom: 2rem;
     justify-content: center;
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
-
 
 }
 
@@ -62,6 +61,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 1rem 0;
+
 }
 
 .input-box {
@@ -96,6 +96,108 @@
   font-weight:500;
   color:#fff;
 }
-.form-header title h1 {
+.form-header title {
+     background-color: #000080;
+}
+.listar-button button {
+    width: 100%;
+      margin-top: 2.5rem;
+      background-color: #00008B;
+      padding: 0.62rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight:500;
+      color:#fff;
+}
+.lista h1 {
+    color:#191970;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.dados h1 {
+    color:#191970;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.lista th {
+    width: 100%;
+    font-size: 15px;
+    padding:3rem;
+    text-align: center;
+    justify-content: space-around;
+}
+.lista tr {
+   width: 100%;
+   font-size: 15px;
+   padding:3rem;
+   text-align: center;
+   justify-content: space-around;
+}
+.dados th {
+    width: 100%;
+    font-size: 15px;
+    padding:2rem;
+    text-align: center;
+    justify-content: space-around;
+}
+.dados tr {
+   width: 100%;
+   font-size: 15px;
+   padding:3rem;
+   text-align: center;
+   justify-content: space-around;
+}
+.ordem-servico a {
      background-color: #00008B;
+     padding: 0.60rem;
+     border-radius: 5px;
+     cursor: pointer;
+     font-size: 15px;
+     color:#fff;
+}
+
+.ordem-servico {
+    text-decoration: none;
+    font-size: 4.5rem;
+
+
+}
+.voltar {
+      padding: 0.70rem;
+      border-radius: 4px;
+      text-align: center;
+      top:800px;
+      left: 800px;
+}
+.voltar a {
+         background-color: #00008B;
+         padding: 0.60rem;
+         cursor: pointer;
+         font-size: 16px;
+         color:#fff;
+         border-radius: 5px;
+}
+
+@media screen and (max-width: 1330px) {
+    .form-image {
+    display: none;
+    }
+    .container {
+    width: 50%;
+    }
+    .form {
+    width: 100%;
+    }
+}
+
+@media screen and (max-width: 1064px) {
+    .container {
+    width:90%;
+    height: auto;
+    }
+    .input-group {
+    flex-direction: column;
+    overflow-y: scroll;
+    flex-wrap: nowrap;
+    }
 }

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Agenadamento de Serviços</title>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+       background: #6495ED;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .info-group {
+      margin-bottom: 20px;
+    }
+
+    .info-label {
+      font-weight: bold;
+    }
+
+    .btn-container {
+      text-align: center;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #191970;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+     .info-group input {
+     text-align: center;
+     border-radius: 4px;
+     font-size: 15px;
+    max-width: 500px;
+    margin: 0auto;
+    padding:10px;
+
+     }
+
+  </style>
+</head>
+<body>
+<div class="container">
+    <h2>Lista de Agenadamento de Serviços</h2>
+    <div class="info-group">
+        <span class="info-label">Nome:</span>
+        <input type="text" th:value="${nome}"/>
+        <span id="name"></span>
+    </div>
+    <div class="info-group">
+        <span class="info-label">E-mail:</span>
+        <input type="text" th:value="${email}"/>
+        <span id="email"></span>
+    </div>
+    <div class="info-group">
+        <span class="info-label">Serviços:</span>
+        <input type="text" th:value="${servico}"/>
+        <span id="services"></span>
+    </div>
+    <div class="info-group">
+        <span class="info-label">Data do Serviço:</span>
+        <input type="text" th:value="${data}"/>
+        <span id="service-date"></span>
+    </div>
+    <div class="info-group">
+        <span class="info-label">Pedido Especial:</span>
+        <input type="text" th:value="${pedidos}"/>
+        <span id="special-request"></span>
+    </div>
+    <div class="btn-container">
+        <button class="btn" onclick="printConfirmation()">Imprimir</button>
+    </div>
+</div>
+<script>
+//Função para imprimir a pagina de agendamento
+        function printConfirmation() {
+      window.print();
+    }
+    // Função para preencher as informações do agendamento
+    function fillConfirmationInfo() {
+      var params = getURLParams();
+      document.getElementById("name").textContent = params.name;
+      document.getElementById("email").textContent = params.email;
+      document.getElementById("services").textContent = params.services;
+      document.getElementById("service-date").textContent = params.serviceDate;
+      document.getElementById("special-request").textContent = params.specialRequest;
+    }
+
+    // Chama a função para preencher as informações do agendamento ao carregar a página
+    window.addEventListener("load", fillConfirmationInfo);
+
+  </script>
+</body>
+</html>

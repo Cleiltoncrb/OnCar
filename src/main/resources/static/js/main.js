@@ -1,4 +1,6 @@
 (function ($) {
+
+
     "use strict";
 
     // Spinner
@@ -12,8 +14,8 @@
     spinner();
     
     
-    // Initiate the wowjs
-    new WOW().init();
+//     Initiate the wowjs
+//    new WOW().init();
 
 
     // Sticky Navbar

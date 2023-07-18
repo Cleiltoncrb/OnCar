@@ -10,7 +10,7 @@
 
 fieldset {
 <!--    border: 2px #000000 solid;-->
-    border-radius: 5px;
+    border-radius: 3px;
     display: inline-block;
     position: relative;
     vertical-align: top;
@@ -35,7 +35,7 @@ table {
 }
 
 tbody tr:nth-child(odd) {
-    background-color: #D6E8DB;
+    background-color: #DCDCDC;
 }
 
 td:nth-child(3),
@@ -48,17 +48,16 @@ tfoot td:nth-child(2) {
 </head>
 <body>
 <div layout:fragment="conteudo">
-    <div>
-        <button>
-            <a href="/oncar/cadastrarcliente">Novo Cliente</a>
-        </button>
-        <br>
-        <br>
-    </div>
 
         <div class="lista">
             <h1 class="mb-5">Lista de Clientes</h1>
         <div>
+            <div>
+                <button>
+                    <a href="/oncar/cadastrarcliente">Novo Cliente</a>
+                </button>
+
+            </div>
             <table>
                 <thead>
                 <tr>
@@ -67,6 +66,7 @@ tfoot td:nth-child(2) {
                     <th>CPF</th>
                     <th>TELEFONE</th>
                     <th>ENDEREÇO</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -76,6 +76,7 @@ tfoot td:nth-child(2) {
                     <td th:text="${cliente.cpf}"></td>
                     <td th:text="${cliente.telefone}"></td>
                     <td th:text="${cliente.endereco}"></td>
+
                     <td>
                         <a th:href="@{/oncar/cadastrarcliente?id={id}(id=${cliente.id})}">Editar</a>
 
@@ -83,6 +84,7 @@ tfoot td:nth-child(2) {
                             <input type="hidden" name="_method" value="delete">
                             <input type="hidden" name="id" th:value="${cliente.id}">
                             <button type="submit">Excluir</button>
+
                         </form>
                     </td>
                 </tr>
@@ -92,7 +94,9 @@ tfoot td:nth-child(2) {
         </div>
 
 
-        <legend>Dados do Veículo</legend>
+    <div class="dados">
+        <h1 class="mb-5">Dados do Veículo</h1>
+        <div>
         <div>
             <table>
                 <thead>
@@ -108,6 +112,7 @@ tfoot td:nth-child(2) {
                     <td th:text="${carro.modelo}"></td>
                     <td th:text="${carro.anofabricacao}"></td>
                     <td>
+
                         <a th:href="@{/oncar/cadastrarcliente?id={id}(id=${carro.id})}">Editar</a>
 
                         <form action="/oncar" method="post">
@@ -118,8 +123,12 @@ tfoot td:nth-child(2) {
                     </td>
                 </tr>
             </table>
+            <br/>
+            <div class="voltar">
+            <a href="/oncar/cadastrarcliente" >Voltar</a>
         </div>
-
+        </div>
+        </div>
 
 </div>
 </div>

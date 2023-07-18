@@ -49,6 +49,13 @@ public class ClienteController {
         return "oficina/listarCliente";
     }
 
+    @GetMapping("/ordemServico")
+    public String ordemDeServico(Model model) {
+        model.addAttribute("listaCLiente", clienteRepository.findAll());
+
+        return "oficina/ordemDeServico";
+    }
+
     @PostMapping
     @Transactional
     public String cadastrarCliente(CadastrarCliente cliente, CadastrarCarro carro) {
